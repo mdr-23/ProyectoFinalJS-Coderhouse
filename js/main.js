@@ -1,14 +1,14 @@
 //INSTANCIO LOS PRODUCTOS
-productos.push(new Producto(1, "Camiseta titular", 8500, 1.21));
-productos.push(new Producto(2, "Camiseta alternativa", 8500, 1.21));
-productos.push(new Producto(3, "Camiseta portero", 8500, 1.21));
-productos.push(new Producto(4, "Camiseta de entrenamiento", 6500, 1.21));
-productos.push(new Producto(5, "Short kit titular", 5000, 1.21));
-productos.push(new Producto(6, "Short kit alternativo", 5000, 1.21));
-productos.push(new Producto(7, "Short kit portero", 5000, 1.21));
-productos.push(new Producto(8, "Medias kit titular", 2500, 1.21));
-productos.push(new Producto(9, "Medias kit alternativo", 2500, 1.21));
-productos.push(new Producto(10, "Medias kit portero", 2500, 1.21));
+productos.push(new Producto(1, "Camiseta titular", categoria[0], 8500, 1.21));
+productos.push(new Producto(2, "Camiseta alternativa", categoria[1], 8500, 1.21));
+productos.push(new Producto(3, "Camiseta portero", categoria[2], 8500, 1.21));
+productos.push(new Producto(4, "Camiseta entrenamiento", categoria[3], 6500, 1.21));
+productos.push(new Producto(5, "Short titular", categoria[0], 5000, 1.21));
+productos.push(new Producto(6, "Short alternativo", categoria[1], 5000, 1.21));
+productos.push(new Producto(7, "Short portero", categoria[2], 5000, 1.21));
+productos.push(new Producto(8, "Medias titulares", categoria[0], 2500, 1.21));
+productos.push(new Producto(9, "Medias alternativas", categoria[1], 2500, 1.21));
+productos.push(new Producto(10, "Medias portero", categoria[2], 2500, 1.21));
 
 //MUESTRO LOS PRODUCTOS POR CONSOLA PARA VERIFICAR FUNCIONAMIENTO DEL ARRAY
 for (let producto of productos){
@@ -17,6 +17,20 @@ for (let producto of productos){
 
 //INTEFAZ JQUERY
 productosUIjQuery(productos, "#productosCards");
+
+//INTERFAZ JQUERY CHECKBOX
+//checkboxUIjQuery(productos, "#filtroCategoria")
+
+
+//FILTRO CATEGORIAS - CHECKBOX
+renderCheckbox(categoria, "#filtroCategoria");
+console.log($('#filtroCategoria'))
+$('#filtroCategoria')[0].onclick = function(){
+    const filtrados = productos.filter(p => p.categoria == this.value);
+    productosUIjQuery(filtrados, '#productosCards');
+}
+
+
 
 /*
 //MÉTODO FIND

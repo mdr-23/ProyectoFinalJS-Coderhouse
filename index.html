@@ -11,9 +11,13 @@
     <title>Tienda - Inter Ibiza C.D.</title>
   </head>
   <body>
-    <h1>TIENDA OFICIAL</h1>
+    <h1 class="d-flex justify-content-center mt-2">TIENDA OFICIAL</h1>
 
-    <div id="productosCards" class="card-columns"></div>
+    <div class="d-flex justify-content-center">
+      <select id="filtroCategoria"> </select>
+    </div>
+
+    <div id="productosCards" class="row row-cols-1 row-cols-md-3 g-4 mx-auto d-flex justify-content-center"></div>
  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
