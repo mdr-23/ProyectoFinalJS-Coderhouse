@@ -1,3 +1,6 @@
+//MÉTODO READY
+productosUIjQuery(productos, 'productosCards')
+
 //INSTANCIO LOS PRODUCTOS
 productos.push(new Producto(1, "Camiseta titular", categoria[0], 8500, 1.21));
 productos.push(new Producto(2, "Camiseta alternativa", categoria[1], 8500, 1.21));
@@ -18,19 +21,22 @@ for (let producto of productos){
 //INTEFAZ JQUERY
 productosUIjQuery(productos, "#productosCards");
 
-//INTERFAZ JQUERY CHECKBOX
-//checkboxUIjQuery(productos, "#filtroCategoria")
+// INTERFAZ JQUERY CHECKBOX
+checkboxUIjQuery(categoria, "#filtroCategoria")
 
+//BOTONES
+let botones = $('.btn-compra');
+for (const boton of botones) {
+    boton.onclick = comprar;
+}
 
-//FILTRO CATEGORIAS - CHECKBOX
+/*FILTRO CATEGORIAS - CHECKBOX
 renderCheckbox(categoria, "#filtroCategoria");
 console.log($('#filtroCategoria'))
 $('#filtroCategoria')[0].onclick = function(){
     const filtrados = productos.filter(p => p.categoria == this.value);
     productosUIjQuery(filtrados, '#productosCards');
-}
-
-
+}*/
 
 /*
 //MÉTODO FIND
