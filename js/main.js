@@ -1,11 +1,11 @@
 // Preloader
-  $(window).on('load', function() {
+/*   $(window).on('load', function() {
     if ($('#loading').length) {
-      $('#loading').fadeOut('slow', function() {
-        $(this).remove();
+      $('#loading').delay(100).fadeOut('slow', function() {
+        $('#loading').remove();
       });
     }
-  });
+  }); */
 
 //FUNCION QUE SE EJECUTA CUANDO SE CARGA EL DOM
 $(document).ready(function () {
@@ -26,8 +26,9 @@ $(document).ready(function () {
 
 //FUNCION QUE SE EJECUTA CUANDO SE CARGA TODA LAS IMAGENES DE LA APLICACION
 window.addEventListener('load',()=>{
-    //MOSTRAR ELEMENTO CON UN FADE
-    $('#cuerpo').delay(200).fadeIn("slow",()=>{ console.log('BODY CARGADO')});
+    $('#loading').delay(400).fadeOut('slow', ()=>{console.log('ELIMINAR SPINNER')});
+    //FADE IN PARA MOSTRAR EL CUERPO DE LA PAGINA
+    $('#cuerpo').delay(800).fadeIn("slow",()=>{ console.log('BODY CARGADO')});
     //OCULTAR ELEMENTO CON UN FADE
     //$('#productosCards').fadeOut(600);
 })
