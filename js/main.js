@@ -1,5 +1,36 @@
-//MÉTODO READY
-productosUIjQuery(productos, 'productosCards')
+// Preloader
+  $(window).on('load', function() {
+    if ($('#loading').length) {
+      $('#loading').fadeOut('slow', function() {
+        $(this).remove();
+      });
+    }
+  });
+
+//FUNCION QUE SE EJECUTA CUANDO SE CARGA EL DOM
+$(document).ready(function () {
+    //console.log(localStorage.getItem("CARRITO"));
+    if("Carrito" in localStorage){
+        const arrayLiterales = JSON.parse(localStorage.getItem("Carrito"));
+        for (const literal of arrayLiterales) {
+            carrito.push(new Producto(literal.id, literal.tipo, literal.categoria, literal.valor, literal.iva, literal.cantidad));
+        }
+        console.log(carrito);
+        carritoUI(carrito);
+    }
+
+    $(".dropdown-menu").click(function (e) { 
+        e.stopPropagation();
+    });
+});
+
+//FUNCION QUE SE EJECUTA CUANDO SE CARGA TODA LAS IMAGENES DE LA APLICACION
+window.addEventListener('load',()=>{
+    //MOSTRAR ELEMENTO CON UN FADE
+    $('#cuerpo').delay(200).fadeIn("slow",()=>{ console.log('BODY CARGADO')});
+    //OCULTAR ELEMENTO CON UN FADE
+    //$('#productosCards').fadeOut(600);
+})
 
 //INSTANCIO LOS PRODUCTOS
 productos.push(new Producto(1, "Camiseta titular", categoria[0], 8500, 1.21));
@@ -25,10 +56,7 @@ productosUIjQuery(productos, "#productosCards");
 checkboxUIjQuery(categoria, "#filtroCategoria")
 
 //BOTONES
-let botones = $('.btn-compra');
-for (const boton of botones) {
-    boton.onclick = comprar;
-}
+$('.btn-compra').on("click", comprar);
 
 /*FILTRO CATEGORIAS - CHECKBOX
 renderCheckbox(categoria, "#filtroCategoria");
