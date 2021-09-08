@@ -43,8 +43,23 @@ for (let producto of productos){
 //INTEFAZ JQUERY PRODUCTOS
 productosUIjQuery(productos, "#productosCards");
 
-// INTERFAZ JQUERY CHECKBOX
-checkboxUIjQuery(categoria, "#filtroCategoria")
+//SELECT RENDERIZAR
+selectUI(categoria,"#filtroCategorias");
 
-//BOTONES
-$('.btn-compra').on("click", comprar);
+//EVENTOS SELECT
+$('#filtroCategorias').change(function (e) { 
+    const value = this.value;
+    //ANIMACION
+    $('#productosCards').fadeOut(600,function(){
+        if(value == 'TODOS'){
+            productosUIjQuery(productos, '#productosCards');
+        }else{
+            const filtrados = productos.filter(producto => producto.categoria == value);
+            productosUIjQuery(filtrados, '#productosCards');
+        }
+        //SELECT RENDERIZAR PRODUCTOS
+        $('#productosCards').fadeIn();
+    });
+});
+
+

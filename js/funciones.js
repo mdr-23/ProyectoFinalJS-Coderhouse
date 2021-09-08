@@ -11,6 +11,8 @@ function productosUIjQuery(productos, id){
                         </div>
                       </div>`)
     }
+    //BOTÓN COMPRAR
+$('.btn-compra').on("click", comprar);
 }
 
 //INTERFAZ DE CHECKBOX CON JQUERY
@@ -105,12 +107,11 @@ function subCantidad(){
   }
 }
 
-//FUNCION RENDER SELECT
-function renderCheckbox(lista, id){
-  //VACIAR EL CONTENIDO DE LA LISTA
-  $(id).empty();
-  //GENERAMOS UN OPTION POR CADA ELEMENTO DE LA LISTA
-  for (const item of lista) {
-    $(id).append(`<option value='${item}'>${item}</option>`);
-  }
+//FUNCION SELECT
+function selectUI(lista, selector){
+  $(selector).empty();
+  lista.forEach(element => {
+      $(selector).append(`<option value='${element}'>${element}</option>`);
+  });
+  $(selector).prepend(`<option value='TODOS' selected>TODOS</option>`);
 }
