@@ -3,7 +3,7 @@ function productosUIjQuery(productos, id){
     $(id).empty()
     for(const producto of productos){
         $(id).append(`<div class="card mx-2" style="width: 18rem;">
-                        <img src="" class="card-img-top mt-2" alt="...">
+                        <img src="${producto.imagen}" class="card-img-top mt-2" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">${(producto.tipo)}</h5>
                           <p class="card-text">${('$ ' + producto.valor*producto.iva)}</p>
@@ -26,25 +26,19 @@ function checkboxUIjQuery(categoria, id){
   }
 }
 
-//COMPRA DE PRODUCTOS
+//COMPRA
 function comprar(e){
-  //PREVENIR REFRESCO AL PRESIONAR ENLACES
   e.preventDefault();
-  //OBTENER ID DEL BOTON PRESIONADO
   const idProducto   = e.target.id;
-  //BUSCAR PRIMERO EL OBJETO EN EL CARRITO (SI FUE SELECCIONADO);
   const seleccionado = carrito.find(p => p.id == idProducto);
-  //SI NO SE ENCONTRO BUSCAR EN ARRAY DE PRODUCTOS
   if(seleccionado == undefined){
     carrito.push(productos.find(p => p.id == idProducto));
   }else{
-    //SI SE ENCONTRO AGREGAR UN CANTIDAD
     seleccionado.agregarCantidad(1);
   }
  
-  //GUARDAR EN STORAGE
+  //STORAGE
   localStorage.setItem("CARRITO",JSON.stringify(carrito));
-  //GENERAR SALID PRODUCTO
   carritoUI(carrito);
 }
 
@@ -82,18 +76,14 @@ function registroCarrito(producto){
 
 function eliminar(e){
   console.log(e.target.id);
-  //PRIMER FORMA DE ELIMINAR (SI CARRITO NO ES CONSTANTE) -> FILTER
-  //carrito = carrito.filter(producto => producto.id != e.target.id);
-  //SEGUNDA FORMA DE ELIMINAR  -> RECORTANDO EL ARRAY CON SPLICE
   let posicion = carrito.findIndex(p => p.id == e.target.id);
   carrito.splice(posicion, 1);
   console.log(carrito);
-  //GENERAR NUEVAMENTE INTERFAZ
   carritoUI(carrito);
-  //GUARDAR EN STORAGE EL NUEVO CARRITO
   localStorage.setItem("Carrito",JSON.stringify(carrito));
 }
-//MANEJADOR PARA AGREGAR CANTIDAD CANTIDAD
+
+//AGREGAR CANTIDAD DE PRODUCTO
 function addCantidad(){
   let producto = carrito.find(p => p.id == this.id);
   producto.agregarCantidad(1);
@@ -102,16 +92,15 @@ function addCantidad(){
   //GUARDAR EN STORAGE
   localStorage.setItem("Carrito",JSON.stringify(carrito));
 }
-//MANEJADOR PARA RESTAR CANTIDAD
+
+//RESTAR CANTIDAD DE PRODUCTO
 function subCantidad(){
   let producto = carrito.find(p => p.id == this.id);
   if(producto.cantidad > 1){
     producto.agregarCantidad(-1);
-    //$(this).parent().children()[1].innerHTML = producto.cantidad;
     let registroUI = $(this).parent().children();
     registroUI[1].innerHTML = producto.cantidad;
     registroUI[2].innerHTML = producto.subtotal();
-    //GUARDAR EN STORAGE
     localStorage.setItem("Carrito",JSON.stringify(carrito));
   }
 }

@@ -1,6 +1,7 @@
 class Producto {
-        constructor(id, tipo, categoria, valor, iva, cantidad) {
+        constructor(id, imagen, tipo, categoria, valor, iva, cantidad) {
             this.id = parseInt(id);
+            this.imagen = imagen;
             this.tipo = tipo;
             this.categoria = categoria;
             this.valor = parseFloat(valor);
@@ -13,7 +14,7 @@ class Producto {
         }
     
         subtotal(){
-            return this.cantidad * this.valor;
+            return '$' + this.cantidad * this.valor * this.iva;
         }
 }
     
