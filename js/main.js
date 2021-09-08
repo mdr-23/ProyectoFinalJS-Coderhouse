@@ -3,7 +3,7 @@ $(document).ready(function () {
     if("Carrito" in localStorage){
         const arrayLiterales = JSON.parse(localStorage.getItem("Carrito"));
         for (const literal of arrayLiterales) {
-            carrito.push(new Producto(literal.id, literal.tipo, literal.categoria, literal.valor, literal.iva, literal.cantidad));
+            carrito.push(new Producto(literal.id, literal.imagen, literal.tipo, literal.categoria, literal.valor, literal.iva, literal.cantidad));
         }
         console.log(carrito);
         carritoUI(carrito);

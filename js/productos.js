@@ -14,7 +14,7 @@ class Producto {
         }
     
         subtotal(){
-            return '$' + this.cantidad * this.valor * this.iva;
+            return '$ ' + this.cantidad * this.valor * this.iva;
         }
 }
     

@@ -108,6 +108,37 @@ h1{
   color: #ffff4d !important;
 }
 
+.btn-manejadores{
+  background-color: rgb(4, 54, 255, 0.7 );
+  border-radius: 40px !important;
+  padding: 2px 11px 2px 11px !important;
+  color: #ffff4d;
+  font-size: 18px !important;
+}
+
+.btn-sub{
+  background-color: rgb(4, 54, 255, 0.7 );
+  border-radius: 40px !important;
+  padding: 2px 12px 2px 12px !important;
+  color: #ffff4d;
+  font-size: 18px !important;
+}
+
+.btn-manejadores:hover{
+  color: #ffff4d !important;
+  background-color: #0436ff;
+}
+
+.btn-sub:hover{
+  color: #ffff4d !important;
+  background-color: #0436ff;
+}
+
+.bg-subtotal {
+  background-color: #ffff4d;
+  color: #0436ff;
+}
+
 /* CARDS */
 .btn-compra{
   background-color: #0436ff !important;

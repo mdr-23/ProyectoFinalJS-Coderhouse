@@ -63,12 +63,12 @@ $('.btn-sub').click(subCantidad);
 //FUNCION PARA GENERAR LA ESTRUCTURA DEL REGISTO HTML
 function registroCarrito(producto){
   return `<p> ${producto.tipo} 
-  <span class="badge bg-warning">$ ${producto.valor}</span>
-  <span class="badge bg-warning">${producto.cantidad}</span>
-  <span class="badge bg-success">$ ${producto.subtotal()}</span>
-  <a id="${producto.id}" class="btn btn-info btn-add">+</a>
-  <a id="${producto.id}" class="btn btn-warning btn-sub">-</a>
-  <a id="${producto.id}" class="btn btn-danger btn-delete">x</a>
+  <span class="badge bg-light text-dark">$ ${producto.valor}</span>
+  <span class="badge bg-light text-dark">${producto.cantidad}</span>
+  <span class="badge bg-subtotal">${producto.subtotal()}</span>
+  <a id="${producto.id}" class="btn btn-manejadores btn-add">+</a>
+  <a id="${producto.id}" class="btn btn-sub">-</a>
+  <a id="${producto.id}" class="btn btn-manejadores btn-delete">x</a>
   </p>`
 }
 
